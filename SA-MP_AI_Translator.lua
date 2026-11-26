@@ -33,8 +33,8 @@ local u8 = encoding.UTF8
 -- =========================
 -- API CONFIGURATION
 -- =========================
-local GEMINI_API_KEY = '' -- Paste Google AI Studio API key here
-local XAI_API_KEY = ''    -- Paste xAI API key here
+local GEMINI_API_KEY = 'AQ.Ab8RN6IG5I_XWAGBtpZxpaoFR2DfDdqEcATDvuWTVkRkndCKjQ' -- Paste Google AI Studio API key here
+local XAI_API_KEY = 'GxVIltWTFyhHf6VSxG5wSIBS16dzoidSvhe3X62QJaiKW4zAb3pixJdyQykBenIPQ5C7VdII4ehoxgJi'    -- Paste xAI API key here
 
 local GEMINI_MODEL = 'gemini-2.5-flash'
 local GROK_MODEL = 'grok-4.6'
