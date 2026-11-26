@@ -1,0 +1,6 @@
+GitHub repository write test
+
+File ini dibuat untuk menguji apakah ChatGPT dapat menambahkan file langsung ke repository.
+
+Repository: bobwan-pixel/Translate-samp-pc-android-Gpt
+Branch: main
