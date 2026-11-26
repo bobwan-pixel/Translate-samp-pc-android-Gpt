@@ -1,6 +1,6 @@
 script_name('SA-MP AI Translator')
 script_author('Bobwan')
-script_version('1.0.0')
+script_version('1.0.1')
 script_description('Gemini -> Grok fallback translator with mimgui')
 
 --[[
@@ -33,10 +33,10 @@ local u8 = encoding.UTF8
 -- =========================
 -- API CONFIGURATION
 -- =========================
-local GEMINI_API_KEY = 'AQ.Ab8RN6IG5I_XWAGBtpZxpaoFR2DfDdqEcATDvuWTVkRkndCKjQ' -- Paste Google AI Studio API key here
-local XAI_API_KEY = 'GxVIltWTFyhHf6VSxG5wSIBS16dzoidSvhe3X62QJaiKW4zAb3pixJdyQykBenIPQ5C7VdII4ehoxgJi'    -- Paste xAI API key here
+local GEMINI_API_KEY = '' -- Isi Google AI Studio API key di sini
+local XAI_API_KEY = '' -- Isi xAI API key di sini
 
-local GEMINI_MODEL = 'gemini-2.5-flash'
+local GEMINI_MODEL = 'gemini-3.5-flash-lite'
 local GROK_MODEL = 'grok-4.6'
 
 local GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/' ..
@@ -167,7 +167,6 @@ local function requestGemini(prompt)
             }
         },
         generationConfig = {
-            temperature = 0.1,
             maxOutputTokens = 160
         }
     })
