@@ -76,12 +76,13 @@ local function setStatus(text)
 end
 
 local function setOutput(text)
-    imgui.StrCopy(outputBuffer, uiText(text))
+    -- API responses and ImGui buffers are already UTF-8.
+    imgui.StrCopy(outputBuffer, tostring(text or ''))
 end
 
 local function chatMessage(text, color)
     if isSampAvailable() then
-        sampAddChatMessage(uiText(text), color or 0xFFFFFFFF)
+        sampAddChatMessage(gameText(text), color or 0xFFFFFFFF)
     end
 end
 
@@ -313,7 +314,7 @@ function sampev.onSendChat(message)
     end
 
     -- Cancel the original Indonesian message; send its translation after API response.
-    runTranslation(original, 'outgoing', function(result, source)
+    runTranslation(u8(original), 'outgoing', function(result, source)
         if result and result ~= '' then
             sendingTranslatedMessage = true
             sampSendChat(gameText(result))
@@ -348,10 +349,10 @@ function sampev.onChatMessage(playerId, text)
 
     local nickname = 'Player ' .. tostring(playerId)
     if sampIsPlayerConnected(playerId) then
-        nickname = sampGetPlayerNickname(playerId)
+        nickname = u8(sampGetPlayerNickname(playerId))
     end
 
-    runTranslation(original, 'incoming', function(result, source)
+    runTranslation(u8(original), 'incoming', function(result, source)
         incomingBusy[key] = nil
         if result and result ~= '' and result ~= '__SKIP__' then
             chatMessage('{AAAAAA}[TR] ' .. nickname .. ': {FFFFFF}' .. result, 0xFFFFFFFF)
